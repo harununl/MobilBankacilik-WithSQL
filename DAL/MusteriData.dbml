@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="mobilBankacilik" Class="MusteriDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MONSTERT5\SQLEXPRESS;Initial Catalog=mobilBankacilik;Integrated Security=True" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="mobilBankacilikConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.KrediBilgileri" Member="KrediBilgileri">
+    <Type Name="KrediBilgileri">
+      <Column Name="KrediNO" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="KrediMiktari" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="KrediVade" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="KrediFaiz" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KullaniciBilgileri" Member="KullaniciBilgileri">
+    <Type Name="KullaniciBilgileri">
+      <Column Name="KayitNO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HesapNO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MusteriAd" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="MusteriSoyad" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="MusteriYas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HesapBilgileri" Member="HesapBilgileri">
+    <Type Name="HesapBilgileri">
+      <Column Name="HesapNO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Bakiye" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
