@@ -14,10 +14,10 @@
         <elementListCompartment Id="677aae9e-fbb9-470d-993e-aba87753257c" absoluteBounds="3.515, 5.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="f3194521-518b-4903-b6df-a5f519fb1723" absoluteBounds="7, 2.375, 2, 1.1939925130208333">
+    <classShape Id="b019f68a-56da-4536-a0d3-050e1eb03915" absoluteBounds="5.625, 2.375, 2, 1.3862939453125">
       <DataClassMoniker Name="/MusteriDataDataContext/HesapBilgileri" />
       <nestedChildShapes>
-        <elementListCompartment Id="43f2346e-4b21-4e5d-ada2-c5584df7a69b" absoluteBounds="7.015, 2.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f29b8a7b-b222-4ddc-bdbc-81f4c18010b6" absoluteBounds="5.64, 2.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BLLL;
 using DAL;
+using DAL.DAO;
 
 namespace WpfApp3
 {
@@ -24,9 +25,12 @@ namespace WpfApp3
         public FrmIslem()
         {
             InitializeComponent();
+
+
         }
         public class Atm
         {
+
 
             public double bakiye { get; set; }
             public double miktar { get; set; }
@@ -109,16 +113,68 @@ namespace WpfApp3
 
         private void btnYatir_Click(object sender, RoutedEventArgs e)
         {
+            double miktariniz;
+            double bakiyeniz;
+            double credit = 1000;
+            double borc;
 
+            double.TryParse(txtYatir.Text, out miktariniz);
+            double.TryParse(txtBakiye.Text, out bakiyeniz);
+            double.TryParse(txtKredi.Text, out borc);
             HesapBilgileri hesap = new HesapBilgileri();
-          
+            hesap.HesapNO = Convert.ToInt32(txtHesap.Text.ToString());
+            hesap.Bakiye = Convert.ToInt32(txtYatir.Text.ToString());
+            Atm islem = new Atm(bakiyeniz, miktariniz, credit, borc);
+            
             if (Convert.ToInt32(txtBakiye.Text) == 0)
             {
-                hesap.Bakiye = Convert.ToInt32(txtYatir.Text.ToString());
-                MessageBox.Show("Para Yatirdiniz.");
+
+                List<HesapBilgileri> list = HesapBLL.HesapGetir(Convert.ToInt32(txtHesap.Text));
+                if(list.Count > 0)
+                {
+                    if (MessageBox.Show("Islemi Onayliyor Musunuz?", "UYARI!!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
+                        double total = islem.paraYatir();
+
+                        txtBakiye.Text = total.ToString();
+                        MessageBox.Show("Hesabiniza " + txtYatir.Text + " Tutarinda Para Yatirilmistir.", "Uyari");
+                    }
+                    txtYatir.Clear();
+
+                    HesapBLL.BakiyeGuncelle(hesap);
+                }
+                else
+                {
+                    if (MessageBox.Show("Islemi Onayliyor Musunuz?", "UYARI!!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
+                        double total = islem.paraYatir();
+
+                        txtBakiye.Text = total.ToString();
+                        MessageBox.Show("Hesabiniza " + txtYatir.Text + " Tutarinda Para Yatirilmistir.", "Uyari");
+                    }
+                    txtYatir.Clear();
+
+                    HesapBLL.BakiyeEkle(hesap);
+                }
+              
+                
+
+
+            }
+            else if (Convert.ToInt32(txtBakiye.Text) > 0)
+            {
+                if (MessageBox.Show("Islemi Onayliyor Musunuz?", "UYARI!!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    double total = islem.paraYatir();
+
+                    txtBakiye.Text = total.ToString();
+                    MessageBox.Show("Hesabiniza " + txtYatir.Text + " Tutarinda Para Yatirilmistir.", "Uyari");
+                }
                 txtYatir.Clear();
 
-                HesapBLL.BakiyeEkle(hesap);
+                //  HesapBLL.BakiyeEkle(hesap);
+
+                HesapBLL.BakiyeGuncelle(hesap);
                 
 
 
@@ -128,9 +184,12 @@ namespace WpfApp3
 
         private void btnSorgula_Click(object sender, RoutedEventArgs e)
         {
+
+            HesapBilgileri hesap = new HesapBilgileri();
+            hesap.HesapNO = Convert.ToInt32(txtHesap.Text.ToString());
             double bakiyeniz;
             double miktariniz;
-
+            string temp = "";
             double credit = 1000;
 
             double total;
@@ -160,6 +219,19 @@ namespace WpfApp3
             {
                 btnSorgula.IsEnabled = false;
             }
+
+
+            //  HesapBLL.BakiyeSorgula(hesap);
+
+            List<HesapBilgileri> list = HesapBLL.BakiyeSorgula(Convert.ToInt32(txtHesap.Text));
+            if(list.Count > 0)
+            {
+                // hesap.Bakiye = Convert.ToInt32(txtBakiye.Text);
+                temp = hesap.KayitNO.ToString();
+                txtBakiye.Text = temp;
+
+            }
+
         }
     }
 }

@@ -394,6 +394,8 @@ namespace DAL
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
+		private int _KayitNO;
+		
 		private int _HesapNO;
 		
 		private int _Bakiye;
@@ -402,6 +404,8 @@ namespace DAL
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
+    partial void OnKayitNOChanging(int value);
+    partial void OnKayitNOChanged();
     partial void OnHesapNOChanging(int value);
     partial void OnHesapNOChanged();
     partial void OnBakiyeChanging(int value);
@@ -413,7 +417,27 @@ namespace DAL
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HesapNO", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KayitNO", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int KayitNO
+		{
+			get
+			{
+				return this._KayitNO;
+			}
+			set
+			{
+				if ((this._KayitNO != value))
+				{
+					this.OnKayitNOChanging(value);
+					this.SendPropertyChanging();
+					this._KayitNO = value;
+					this.SendPropertyChanged("KayitNO");
+					this.OnKayitNOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HesapNO", DbType="Int NOT NULL")]
 		public int HesapNO
 		{
 			get

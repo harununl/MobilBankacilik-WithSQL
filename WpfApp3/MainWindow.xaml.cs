@@ -33,46 +33,76 @@ namespace WpfApp3
         {
             this.Close();
         }
-        //public double HesapNo { get; set; }
-
-
-        //public MainWindow(double HesapNo) { this.HesapNo = HesapNo; }
-        //public List<string> Bilgiler = new List<string>();
+      
         private void btnOlustur_Click(object sender, RoutedEventArgs e)
         {
-            KullaniciBilgileri kullanici = new KullaniciBilgileri();
            
-           //HesapBilgileri hesap = new HesapBilgileri();
+            KullaniciBilgileri kullanici = new KullaniciBilgileri();
 
             kullanici.HesapNO = Convert.ToInt32(txtNo.Text.ToString());
            
             kullanici.MusteriAd = txtAd.Text;
             kullanici.MusteriSoyad = txtSoyad.Text;
             kullanici.MusteriYas = Convert.ToInt32(txtYas.Text.ToString());
-            MessageBox.Show("Basariyla Musteri Oldunuz.");
-            txtAd.Clear();
-            txtSoyad.Clear();
-            txtYas.Clear();
-            txtNo.Clear();
-          
-           
-           
-            
+     
+            if(kullanici.MusteriYas < 18) 
+            {
+                MessageBox.Show("Yasiniz 18den buyuk olmali");
+            }
+            else if(kullanici.HesapNO.ToString().Length != 6)
+            {
+                MessageBox.Show("Hesap No 6 haneli olmalidir.");
+            }
+            else
+            {
+                List<KullaniciBilgileri> list = KullaniciBLL.KullaniciGetir(Convert.ToInt32(txtNo.Text));
+                if (list.Count > 0)
+                {
+                    MessageBox.Show("Zaten Kayitlisiniz.");
+                    txtAd.Clear();
+                    txtSoyad.Clear();
+                    txtYas.Clear();
+                    txtNo.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Basariyla Musteri Oldunuz.");
+                    txtAd.Clear();
+                    txtSoyad.Clear();
+                    txtYas.Clear();
+                    txtNo.Clear();
+                    MessageBox.Show("Hesap numaraniz ile giris yapabilirsiniz.");
 
-            MessageBox.Show("Hesap numaraniz ile giris yapabilirsiniz.");
+
+                    KullaniciBLL.KullaniciEkle(kullanici);
+                }
+
+
+
+              
+                
+               
+
+            }
+
+
+
+
+
            
-         
-            KullaniciBLL.KullaniciEkle(kullanici);
        
 
         }
 
         private void btnIslem_Click(object sender, RoutedEventArgs e)
         {
-
-
+         
+            double txtIlk;
+            double txtYeni;
+            string temp = "";
+          
         
-
+           
           
             if (txtHesap.Text.Trim() == "")
             {
@@ -87,11 +117,23 @@ namespace WpfApp3
                 }
                 else
                 {
-                    MessageBox.Show("Basariyla Giris Yaptiniz.");
-                    txtHesap.Clear();
                     FrmIslem islem = new FrmIslem();
+                    double.TryParse(txtHesap.Text, out txtIlk);
+                    double.TryParse(islem.txtHesap.Text, out txtYeni);
+
+                    temp = txtHesap.Text;
+                   
+                    islem.txtHesap.Text = temp;
+
+                   
+
+                  
+                    MessageBox.Show("Basariyla Giris Yaptiniz.");
+                  
+                    
                     this.Hide();
                     islem.ShowDialog();
+                    
                     this.Visibility = Visibility.Visible;
                 }
             }

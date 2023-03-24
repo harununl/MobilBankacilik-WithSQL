@@ -15,5 +15,25 @@ namespace BLLL
             HesapDAO.BakiyeEkle(hesap);
            
         }
+
+        public static void BakiyeGuncelle(HesapBilgileri hesap)
+        {
+            HesapDAO.BakiyeGuncelle(hesap);
+        }
+
+        public static List<HesapBilgileri> BakiyeSorgula(int v)
+        {
+            return HesapDAO.BakiyeSorgula(v);
+        }
+
+        public static List<HesapBilgileri> HesapGetir(HesapBilgileri hesap)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static List<HesapBilgileri> HesapGetir(int v)
+        {
+            return HesapDAO.HesapGetir(v);
+        }
     }
 }

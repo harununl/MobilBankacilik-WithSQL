@@ -43,6 +43,8 @@
                 <Button Name="btnExit" FontWeight="Bold" Content="Cikis" FontSize="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="674,-198,0,0" Width="131" Height="58"  Background="#FFF13A03" RenderTransformOrigin="0.746,0.399" Click="btnExit_Click"></Button>
                 <Button Name="btnOde" Content="Borc Ode" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="30" RenderTransformOrigin="0.845,1.066" Margin="16,78,0,0" Height="58" Width="155" Background="#FFF7CC03" ></Button>
                 <Button Name="btnKredi" Content="Kredi Cek" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="30" Width="155" Height="59" Margin="16,14,0,0" ></Button>
+                <Label Content="Hesap Numaraniz" HorizontalAlignment="Left" Margin="716,165,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.109,0.473" Width="109" FontWeight="Bold"/>
+                <TextBlock HorizontalAlignment="Left" Margin="716,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="109" Name="txtHesap"/>
             </Grid>
 
 

@@ -19,7 +19,8 @@
   </Table>
   <Table Name="dbo.HesapBilgileri" Member="HesapBilgileri">
     <Type Name="HesapBilgileri">
-      <Column Name="HesapNO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="KayitNO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HesapNO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Bakiye" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
