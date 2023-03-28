@@ -65,21 +65,40 @@ namespace DAL.DAO
 			}
         }
 
-        public static void BakiyeSorgula(HesapBilgileri hesap)
+       
+
+        public static void ArtiGuncelle(HesapBilgileri hesap)
         {
-		
 			try
 			{
-				HesapBilgileri hsp = db.HesapBilgileri.First(x => x.HesapNO == hesap.HesapNO);
-				hesap.Bakiye = hsp.Bakiye;
-				db.SubmitChanges();
 
-			}
+                HesapBilgileri hsp = db.HesapBilgileri.First(x => x.HesapNO == hesap.HesapNO);
+                hsp.ArtiPara -= hesap.ArtiPara;
+                db.SubmitChanges();
+
+            }
 			catch (Exception ex)
 			{
 
 				throw ex;
 			}
+        }
+
+        public static void ArtiGuncelleArti(HesapBilgileri hesap)
+        {
+            try
+            {
+
+                HesapBilgileri hsp = db.HesapBilgileri.First(x => x.HesapNO == hesap.HesapNO);
+                hsp.ArtiPara += hesap.ArtiPara;
+                db.SubmitChanges();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

@@ -10,6 +10,16 @@ namespace BLLL
 {
     public class HesapBLL
     {
+        public static void ArtiGuncelle(HesapBilgileri hesap)
+        {
+            HesapDAO.ArtiGuncelle(hesap);
+        }
+
+        public static void ArtiGuncelleArti(HesapBilgileri hesap)
+        {
+            HesapDAO.ArtiGuncelleArti(hesap);
+        }
+
         public static void BakiyeEkle(HesapBilgileri hesap)
         {
             HesapDAO.BakiyeEkle(hesap);
@@ -26,10 +36,7 @@ namespace BLLL
             HesapDAO.BakiyeGuncelleEksi(hesap);
         }
 
-        public static void BakiyeSorgula(HesapBilgileri hesap)
-        {
-            HesapDAO.BakiyeSorgula(hesap);
-        }
+      
 
         public static List<HesapBilgileri> HesapGetir(HesapBilgileri hesap)
         {

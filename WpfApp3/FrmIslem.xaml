@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp3"
         mc:Ignorable="d"
-        Title="FrmIslem" Height="488" Width="853">
+        Title="FrmIslem" Height="518" Width="853">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -21,11 +21,11 @@
 
 
         <Border Grid.Row="0" Margin="0,0,0,240" Grid.RowSpan="2" >
-            <Grid>
+            <Grid Margin="0,-9,0,-9">
 
                 <TextBlock Text="0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20" Foreground="Red" Margin="38,23,0,0" Name="txtKredi" Width="106" TextAlignment="Center" RenderTransformOrigin="0.674,0.452" Height="27" FontWeight="Bold" ></TextBlock>
 
-                <TextBlock Name="txtArti" Text="1000" Margin="20,116,685,72"   TextAlignment="Center" Foreground="Green" FontWeight="Bold" FontSize="20" RenderTransformOrigin="0.499,1.222" ></TextBlock>
+                <TextBlock Name="txtArti" Text="" Margin="20,116,685,72"   TextAlignment="Center" Foreground="Green" FontWeight="Bold" FontSize="20" RenderTransformOrigin="0.499,1.222" ></TextBlock>
                 <Label Content="Arti Para Bakiyeniz" HorizontalAlignment="Left" FontSize="20" Margin="14,169,0,17" FontWeight="Bold" Width="188" />
                 <Label Content="Kredi Borcunuz" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20" Margin="14,55,0,0" Width="154" FontWeight="Bold" Height="37" ></Label>
                 <TextBlock Name="txtBakiye" FontWeight="Bold" TextAlignment="Center" FontSize="50" Text="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="226,55,0,0" Width="340" RenderTransformOrigin="0.571,0.542" Height="67"/>
@@ -34,14 +34,14 @@
 
         <Border  Grid.Row="1" >
 
-            <Grid>
+            <Grid Margin="0,23,0,0">
                 <TextBox HorizontalAlignment="Center" FontWeight="Bold" TextAlignment="Center"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="361" Name="txtYatir" Height="44" FontSize="40" RenderTransformOrigin="0.334,0.562" Margin="0,43,0,0"  />
                 <Button Name="btnYatir" Width="155" VerticalAlignment="Top" HorizontalAlignment="Left" Height="58" Content="Para Yatir"  FontSize="30" Margin="16,149,0,0"  Background="#FF1FD66D" Click="btnYatir_Click"></Button>
                 <Button Name="btnCek" Width="155" VerticalAlignment="Top" HorizontalAlignment="Left" Height="59" Content="Para Cek"  FontSize="30" Margin="200,149,0,0" Background="#FFFFBC03" Click="btnCek_Click"></Button>
                 <Button Name="btnSorgula" Width="326" VerticalAlignment="Top" HorizontalAlignment="Left" Height="59" Content="Bakiye Sorgula"  FontSize="30" Margin="385,148,0,0"  RenderTransformOrigin="0.656,1.524" Click="btnSorgula_Click"></Button>
 
                 <Button Name="btnExit" FontWeight="Bold" Content="Cikis" FontSize="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="674,-198,0,0" Width="131" Height="58"  Background="#FFF13A03" RenderTransformOrigin="0.746,0.399" Click="btnExit_Click"></Button>
-                <Button Name="btnOde" Content="Borc Ode" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="30" RenderTransformOrigin="0.845,1.066" Margin="16,78,0,0" Height="58" Width="155" Background="#FFF7CC03" ></Button>
+                <Button Name="btnOde" Content="Borc Ode" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="30" RenderTransformOrigin="0.845,1.066" Margin="16,78,0,0" Height="58" Width="155" Background="#FFF7CC03" Click="btnOde_Click" ></Button>
                 <Button Name="btnKredi" Content="Kredi Cek" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="30" Width="155" Height="59" Margin="16,14,0,0" ></Button>
                 <Label Content="Hesap Numaraniz" HorizontalAlignment="Left" Margin="716,165,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.109,0.473" Width="109" FontWeight="Bold"/>
                 <TextBlock HorizontalAlignment="Left" Margin="716,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Width="109" Name="txtHesap"/>

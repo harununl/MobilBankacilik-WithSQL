@@ -31,7 +31,13 @@ namespace WpfApp3
 
         private void btnCıkıs_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            if (MessageBox.Show("Emin misiniz?", "Uyari",MessageBoxButton.YesNo,MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                this.Close();
+
+            }
+            
+           
         }
       
         private void btnOlustur_Click(object sender, RoutedEventArgs e)
