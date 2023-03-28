@@ -47,9 +47,39 @@ namespace DAL.DAO
 			}
         }
 
-        public static List<HesapBilgileri> BakiyeSorgula(int v)
+       
+
+        public static void BakiyeGuncelleEksi(HesapBilgileri hesap)
         {
-           return db.HesapBilgileri.Where(x=>x.HesapNO==v).ToList();	
+			try
+			{
+				HesapBilgileri hsp = db.HesapBilgileri.First(x=>x.HesapNO == hesap.HesapNO);
+				hsp.Bakiye -= hesap.Bakiye;
+				db.SubmitChanges();
+
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+        }
+
+        public static void BakiyeSorgula(HesapBilgileri hesap)
+        {
+		
+			try
+			{
+				HesapBilgileri hsp = db.HesapBilgileri.First(x => x.HesapNO == hesap.HesapNO);
+				hesap.Bakiye = hsp.Bakiye;
+				db.SubmitChanges();
+
+			}
+			catch (Exception ex)
+			{
+
+				throw ex;
+			}
         }
     }
 }

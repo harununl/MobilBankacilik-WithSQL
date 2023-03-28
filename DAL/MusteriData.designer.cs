@@ -400,6 +400,8 @@ namespace DAL
 		
 		private int _Bakiye;
 		
+		private int _ArtiPara;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -410,6 +412,8 @@ namespace DAL
     partial void OnHesapNOChanged();
     partial void OnBakiyeChanging(int value);
     partial void OnBakiyeChanged();
+    partial void OnArtiParaChanging(int value);
+    partial void OnArtiParaChanged();
     #endregion
 		
 		public HesapBilgileri()
@@ -473,6 +477,26 @@ namespace DAL
 					this._Bakiye = value;
 					this.SendPropertyChanged("Bakiye");
 					this.OnBakiyeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArtiPara", DbType="Int NOT NULL")]
+		public int ArtiPara
+		{
+			get
+			{
+				return this._ArtiPara;
+			}
+			set
+			{
+				if ((this._ArtiPara != value))
+				{
+					this.OnArtiParaChanging(value);
+					this.SendPropertyChanging();
+					this._ArtiPara = value;
+					this.SendPropertyChanged("ArtiPara");
+					this.OnArtiParaChanged();
 				}
 			}
 		}
