@@ -2,22 +2,16 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="MusteriData">
   <DataContextMoniker Name="/MusteriDataDataContext" />
   <nestedChildShapes>
-    <classShape Id="a85eb814-0753-414e-8118-9ca3b02387bd" absoluteBounds="0.5, 1, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/MusteriDataDataContext/KrediBilgileri" />
-      <nestedChildShapes>
-        <elementListCompartment Id="c6e0f886-6cc3-4053-9509-fed8bb150720" absoluteBounds="0.51500000000000012, 1.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="d7224286-e6c4-4b73-8aaa-76a17800e6ee" absoluteBounds="3.5, 4.75, 2, 1.7708968098958331">
       <DataClassMoniker Name="/MusteriDataDataContext/KullaniciBilgileri" />
       <nestedChildShapes>
         <elementListCompartment Id="677aae9e-fbb9-470d-993e-aba87753257c" absoluteBounds="3.515, 5.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="3a5f74d9-d6ee-431f-9c1f-144d1d1b5629" absoluteBounds="5.625, 2.125, 2, 1.5785953776041666">
+    <classShape Id="a87bfe65-a6bf-464c-b0eb-76096148d216" absoluteBounds="4.125, 1.625, 2, 1.7708968098958331">
       <DataClassMoniker Name="/MusteriDataDataContext/HesapBilgileri" />
       <nestedChildShapes>
-        <elementListCompartment Id="31f9e729-c828-406d-a0c4-6aed63cc7e1c" absoluteBounds="5.64, 2.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="2ad648bf-1e94-47c4-aa45-28824047a43e" absoluteBounds="4.1400000000000006, 2.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

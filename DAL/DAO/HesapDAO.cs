@@ -100,5 +100,40 @@ namespace DAL.DAO
                 throw ex;
             }
         }
+
+        public static void KrediCek(HesapBilgileri hesap)
+        {
+
+            try
+            {
+
+                HesapBilgileri hsp = db.HesapBilgileri.First(x => x.HesapNO == hesap.HesapNO);
+               hsp.KrediBorc -= hesap.KrediBorc;
+                db.SubmitChanges();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public static void KrediOde(HesapBilgileri hesap)
+        {
+            try
+            {
+
+                HesapBilgileri hsp = db.HesapBilgileri.First(x => x.HesapNO == hesap.HesapNO);
+                hsp.KrediBorc += hesap.KrediBorc;
+                db.SubmitChanges();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="881">
+        Title="MainWindow" MaxHeight="450" MaxWidth="881" MinHeight="450" MinWidth="881" WindowStartupLocation="CenterScreen" >
     <Grid Margin="0,0,10,-6">
         <Label Content="Musteri Ad" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" Width="162" FontSize="25" FontWeight="Bold" Height="62"/>
         <Label Content="Musteri Soyad" FontSize="25" FontWeight="Bold" Margin="10,168,587,200" />

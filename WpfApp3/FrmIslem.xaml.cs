@@ -133,6 +133,7 @@ namespace WpfApp3
             hesap.HesapNO = Convert.ToInt32(txtHesap.Text.ToString());
             hesap.Bakiye = Convert.ToInt32(txtYatir.Text.ToString());
             hesap.ArtiPara = Convert.ToInt32(txtArti.Text);
+            hesap.KrediBorc = Convert.ToInt32(txtKredi.Text);
             Atm islem = new Atm(bakiyeniz, miktariniz, credit, borc);
             
             if (Convert.ToInt32(txtBakiye.Text) == 0)
@@ -233,24 +234,28 @@ namespace WpfApp3
 
             string connectionString = "Data Source=MONSTERT5\\SQLEXPRESS;Initial Catalog=mobilBankacilik;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False";
             SqlConnection connection = new SqlConnection(connectionString);
-            SqlConnection connectionNew = new SqlConnection(connectionString);
+            SqlConnection connectionArti = new SqlConnection(connectionString);
+            SqlConnection connectionKredi = new SqlConnection(connectionString);
 
 
 
 
             // SqlCommand nesnesi oluşturma
             SqlCommand command = new SqlCommand("SELECT Bakiye FROM HesapBilgileri WHERE HesapNO = @hesapNo",connection);
-            SqlCommand commandNew = new SqlCommand("SELECT ArtiPara FROM HesapBilgileri WHERE HesapNO = @hesapNo", connectionNew);
+            SqlCommand commandArti = new SqlCommand("SELECT ArtiPara FROM HesapBilgileri WHERE HesapNO = @hesapNo", connectionArti);
+            SqlCommand commandKredi = new SqlCommand("SELECT KrediBorc FROM HesapBilgileri WHERE HesapNO = @hesapNo", connectionKredi);
 
 
             // @hesapNo parametresine değer atama
             command.Parameters.AddWithValue("@hesapNo", txtHesap.Text);
-            commandNew.Parameters.AddWithValue("@hesapNo", txtHesap.Text);
+            commandArti.Parameters.AddWithValue("@hesapNo", txtHesap.Text);
+            commandKredi.Parameters.AddWithValue("@hesapNo", txtHesap.Text);
 
             // Sorguyu çalıştırma ve sonucu alıp TextBox'a yazdırma
             connection.Open();
-            connectionNew.Open();
-            
+            connectionArti.Open();
+            connectionKredi.Open();
+
 
             object result = command.ExecuteScalar();
             if (result != null)
@@ -259,18 +264,26 @@ namespace WpfApp3
                
             }
 
-            object resultNew = commandNew.ExecuteScalar();
-            if (resultNew != null)
+            object resultArti = commandArti.ExecuteScalar();
+            if (resultArti != null)
             {
-                txtArti.Text = resultNew.ToString();
+                txtArti.Text = resultArti.ToString();
 
             }
 
+            object resultkredi = commandKredi.ExecuteScalar();
+            if (resultkredi != null)
+            {
+                txtKredi.Text = resultkredi.ToString();
+
+            }
             connection.Close();
+            connectionArti.Close();
+            connectionKredi.Close();
 
 
 
-           
+
 
         }
 
@@ -415,6 +428,7 @@ namespace WpfApp3
             double.TryParse(txtKredi.Text, out borc);
             hesap.ArtiPara = Convert.ToInt32(txtYatir.Text);
             hesap.HesapNO = Convert.ToInt32(txtHesap.Text);
+            hesap.KrediBorc = Convert.ToInt32(txtYatir.Text);
 
 
             Atm islem = new Atm(bakiyeniz, miktariniz, ekstra, borc); ;
@@ -449,7 +463,8 @@ namespace WpfApp3
                     {
                         kredi = islem.krediOde();
                         txtKredi.Text = kredi.ToString();
-
+                        HesapBLL.KrediOde(hesap);
+                        MessageBox.Show(txtYatir.Text + " tutarinda borc odemesi yapilmistir.", "Uyari!!");
                     }
                     else
                     {
@@ -463,6 +478,75 @@ namespace WpfApp3
 
             txtYatir.Clear();
 
+
+        }
+
+        private void btnKredi_Click(object sender, RoutedEventArgs e)
+        {
+
+            double miktariniz;
+            double bakiyeniz;
+            double borc;
+
+            HesapBilgileri hesap = new HesapBilgileri();
+            double.TryParse(txtYatir.Text, out miktariniz);
+            double.TryParse(txtBakiye.Text, out bakiyeniz);
+            double.TryParse(txtKredi.Text, out borc);
+            hesap.HesapNO = Convert.ToInt32(txtHesap.Text);
+            hesap.KrediBorc = Convert.ToInt32(txtYatir.Text);
+
+
+            Atm islem = new Atm(bakiyeniz, miktariniz, 1000, borc);
+
+
+
+
+            double kredi = islem.krediCek();
+
+            if (txtYatir.Text != "")
+            {
+                List<HesapBilgileri> list = HesapBLL.HesapGetir(Convert.ToInt32(txtHesap.Text));
+                if (list.Count>0)
+                {
+                    if (bakiyeniz > 1000)
+                    {
+
+
+                        if (Convert.ToInt32(txtYatir.Text) < 5000)
+                        {
+                            MessageBox.Show("5000 e kadar kredi kullanabilirsiniz");
+
+
+                            if (MessageBox.Show(txtYatir.Text + " tutarinda kredi cekilecektir onayliyor musunuz?", "Uyari!!", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                            {
+
+                                txtKredi.Text = kredi.ToString();
+                                txtYatir.Clear();
+                                HesapBLL.KrediCek(hesap);
+                                MessageBox.Show("Kredi Kullandiniz");
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Kullanabileceginiz maksimum kredi miktari 5000dir");
+                            txtYatir.Clear();
+                        }
+
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Kredi Icin Hesabinizda 1000 den fazla Bakiye Bulunmalidir", "Uyari!!");
+                    }
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Lutfen Cekmek Istediginiz Kredi Tutarini Giriniz.");
+            }
 
         }
     }

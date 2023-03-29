@@ -47,5 +47,15 @@ namespace BLLL
         {
             return HesapDAO.HesapGetir(v);
         }
+
+        public static void KrediCek(HesapBilgileri hesap)
+        {
+            HesapDAO.KrediCek(hesap);
+        }
+
+        public static void KrediOde(HesapBilgileri hesap)
+        {
+            HesapDAO.KrediOde(hesap);
+        }
     }
 }

@@ -30,9 +30,6 @@ namespace DAL
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertKrediBilgileri(KrediBilgileri instance);
-    partial void UpdateKrediBilgileri(KrediBilgileri instance);
-    partial void DeleteKrediBilgileri(KrediBilgileri instance);
     partial void InsertKullaniciBilgileri(KullaniciBilgileri instance);
     partial void UpdateKullaniciBilgileri(KullaniciBilgileri instance);
     partial void DeleteKullaniciBilgileri(KullaniciBilgileri instance);
@@ -71,14 +68,6 @@ namespace DAL
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<KrediBilgileri> KrediBilgileri
-		{
-			get
-			{
-				return this.GetTable<KrediBilgileri>();
-			}
-		}
-		
 		public System.Data.Linq.Table<KullaniciBilgileri> KullaniciBilgileri
 		{
 			get
@@ -92,140 +81,6 @@ namespace DAL
 			get
 			{
 				return this.GetTable<HesapBilgileri>();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KrediBilgileri")]
-	public partial class KrediBilgileri : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _KrediNO;
-		
-		private int _KrediMiktari;
-		
-		private int _KrediVade;
-		
-		private int _KrediFaiz;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnKrediNOChanging(int value);
-    partial void OnKrediNOChanged();
-    partial void OnKrediMiktariChanging(int value);
-    partial void OnKrediMiktariChanged();
-    partial void OnKrediVadeChanging(int value);
-    partial void OnKrediVadeChanged();
-    partial void OnKrediFaizChanging(int value);
-    partial void OnKrediFaizChanged();
-    #endregion
-		
-		public KrediBilgileri()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KrediNO", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int KrediNO
-		{
-			get
-			{
-				return this._KrediNO;
-			}
-			set
-			{
-				if ((this._KrediNO != value))
-				{
-					this.OnKrediNOChanging(value);
-					this.SendPropertyChanging();
-					this._KrediNO = value;
-					this.SendPropertyChanged("KrediNO");
-					this.OnKrediNOChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KrediMiktari", DbType="Int NOT NULL")]
-		public int KrediMiktari
-		{
-			get
-			{
-				return this._KrediMiktari;
-			}
-			set
-			{
-				if ((this._KrediMiktari != value))
-				{
-					this.OnKrediMiktariChanging(value);
-					this.SendPropertyChanging();
-					this._KrediMiktari = value;
-					this.SendPropertyChanged("KrediMiktari");
-					this.OnKrediMiktariChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KrediVade", DbType="Int NOT NULL")]
-		public int KrediVade
-		{
-			get
-			{
-				return this._KrediVade;
-			}
-			set
-			{
-				if ((this._KrediVade != value))
-				{
-					this.OnKrediVadeChanging(value);
-					this.SendPropertyChanging();
-					this._KrediVade = value;
-					this.SendPropertyChanged("KrediVade");
-					this.OnKrediVadeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KrediFaiz", DbType="Int NOT NULL")]
-		public int KrediFaiz
-		{
-			get
-			{
-				return this._KrediFaiz;
-			}
-			set
-			{
-				if ((this._KrediFaiz != value))
-				{
-					this.OnKrediFaizChanging(value);
-					this.SendPropertyChanging();
-					this._KrediFaiz = value;
-					this.SendPropertyChanged("KrediFaiz");
-					this.OnKrediFaizChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -402,6 +257,8 @@ namespace DAL
 		
 		private int _ArtiPara;
 		
+		private System.Nullable<int> _KrediBorc;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -414,6 +271,8 @@ namespace DAL
     partial void OnBakiyeChanged();
     partial void OnArtiParaChanging(int value);
     partial void OnArtiParaChanged();
+    partial void OnKrediBorcChanging(System.Nullable<int> value);
+    partial void OnKrediBorcChanged();
     #endregion
 		
 		public HesapBilgileri()
@@ -497,6 +356,26 @@ namespace DAL
 					this._ArtiPara = value;
 					this.SendPropertyChanged("ArtiPara");
 					this.OnArtiParaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KrediBorc", DbType="Int")]
+		public System.Nullable<int> KrediBorc
+		{
+			get
+			{
+				return this._KrediBorc;
+			}
+			set
+			{
+				if ((this._KrediBorc != value))
+				{
+					this.OnKrediBorcChanging(value);
+					this.SendPropertyChanging();
+					this._KrediBorc = value;
+					this.SendPropertyChanged("KrediBorc");
+					this.OnKrediBorcChanged();
 				}
 			}
 		}

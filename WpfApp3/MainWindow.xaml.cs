@@ -135,6 +135,7 @@ namespace WpfApp3
 
                   
                     MessageBox.Show("Basariyla Giris Yaptiniz.");
+                    txtHesap.Clear();
                   
                     
                     this.Hide();
