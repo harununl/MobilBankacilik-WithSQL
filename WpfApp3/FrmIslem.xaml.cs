@@ -214,12 +214,13 @@ namespace WpfApp3
 
             total = islem.sorgula();
             creditBalance = islem.artiPara();
-
+            credit = islem.krediCek();
 
             
 
             
             txtArti.Text = creditBalance.ToString();
+            txtKredi.Text= credit.ToString();
             int counter = 0;
             counter++;
             if (counter > 0)

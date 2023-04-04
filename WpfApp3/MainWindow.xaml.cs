@@ -33,7 +33,7 @@ namespace WpfApp3
         {
             if (MessageBox.Show("Emin misiniz?", "Uyari",MessageBoxButton.YesNo,MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                this.Close();
+                Close();
 
             }
             
